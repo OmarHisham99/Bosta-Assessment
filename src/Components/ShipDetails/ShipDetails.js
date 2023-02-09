@@ -19,7 +19,7 @@ const ShipDetails = ({
   shipState,
   shipLastStateDate,
   shipEvents,
-  language
+  language,
 }) => {
   let events = shipEvents;
   return (
@@ -40,7 +40,7 @@ const ShipDetails = ({
             color: "#667085",
             fontSize: "16px",
           }}
-        >{`${languages[language]['Shipment No.']}: ${shipNumber}`}</p>
+        >{`${languages[language]["Shipment No."]}: ${shipNumber}`}</p>
         <p
           style={{
             fontFamily: "Cairo-Regular",
@@ -48,7 +48,9 @@ const ShipDetails = ({
             margin: "auto",
           }}
         >
-          {languages[language][shipState] ? languages[language][shipState] : shipState}
+          {languages[language][shipState]
+            ? languages[language][shipState]
+            : shipState}
         </p>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row", gap: "6px" }}>
@@ -84,7 +86,11 @@ const ShipDetails = ({
         fontFamily="Cairo-Regular"
         sx={{ display: "flex", flexDirection: "row", gap: "3px", mt: "24px" }}
       >
-        <p>{languages[language][shipState] ? languages[language][shipState] : shipState}</p>
+        <p>
+          {languages[language][shipState]
+            ? languages[language][shipState]
+            : shipState}
+        </p>
         <p style={{ color: "#0098a5", fontFamily: "Cairo-Regular" }}>
           {shipLastStateDate}
         </p>
@@ -106,14 +112,14 @@ const ShipDetails = ({
                     <p
                       style={{ color: "#475467", fontFamily: "lato-SemiBold" }}
                     >
-                      {moment(item.timestamp).format('L')}
+                      {moment(item.timestamp).format("L")}
                     </p>
                   </TimelineOppositeContent>
                   <TimelineSeparator>
                     <TimelineDot />
                     <TimelineConnector />
                   </TimelineSeparator>
-                  <TimelineContent>{item.state}</TimelineContent>
+                  <TimelineContent>{languages[language][item.state] ? languages[language][item.state] : item.state }</TimelineContent>
                 </TimelineItem>
               );
             })}
