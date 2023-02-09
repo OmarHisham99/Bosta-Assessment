@@ -11,6 +11,7 @@ export const languages = {
       'NOT_YET_SHIPPED': 'Not Yet Shipped',
       'OUT_FOR_DELIVERY': 'Out for Delivery',
       'WAITING_FOR_CUSTOMER_ACTION': 'Waiting for Customer Action',
+      'IN_TRANSIT': 'In Transit',
     },
     'ar':{
       'Track Your Shipment': 'تتبع شحنتك',
@@ -24,7 +25,7 @@ export const languages = {
       'NOT_YET_SHIPPED': 'لم يتم الشحن بعد',
       'OUT_FOR_DELIVERY': 'خارج للتسليم',
       'WAITING_FOR_CUSTOMER_ACTION': 'في انتظار إجراءات العميل',
-
+      'IN_TRANSIT': 'في النقل',
     }
   }
   export default languages;
