@@ -50,7 +50,6 @@ function App() {
 
   // ************* Functions *************
   const handleSearch = () => {
-    // console.log(shipNumber)
     dispatch(fetchShipById(shipNumber));
     checkValidation();
     setShipState(data?.data?.CurrentStatus?.state);
@@ -58,13 +57,10 @@ function App() {
       moment(data?.data?.CurrentStatus?.timestamp).format("LLLL")
     );
     setTransitEvents(data?.data?.TransitEvents);
-    // console.log(data?.data?.TrackingNumber)
     setShipTrackingNumber(data?.data?.TrackingNumber);
   };
 
   const checkValidation = () => {
-    console.log(shipNumber);
-    console.log(JSON.stringify(data));
     if (shipNumber === "") {
       setDetailsOpen(false);
     } else if (Object.keys(data.data).length === 0) {
