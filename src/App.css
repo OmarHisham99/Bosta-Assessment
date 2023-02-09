@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+@font-face{
+  font-family: Poppins-semiBold;
+  src: local('Poppins-semiBold'), url('./fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: Lato-semiBold;
+  src: local('Lato-semiBold'),url('./fonts/LatoSemibold.ttf') format('truetype');
+}
+
+html[:dir='rtl'] {
+  transform: scaleX(-1);
+}
