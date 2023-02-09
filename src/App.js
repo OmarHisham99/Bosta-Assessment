@@ -144,7 +144,7 @@ function App() {
         <Typography
           variant="h6"
           component="div"
-          sx={{ fontFamily: "Poppins-SemiBold", color: "#475467", mb: "24px" }}
+          sx={{ fontFamily: "Cairo-Regular", color: "#475467", mb: "24px" }}
         >
           {languages[language]['Track Your Shipment']}
         </Typography>

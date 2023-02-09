@@ -36,19 +36,19 @@ const ShipDetails = ({
       >
         <p
           style={{
-            fontFamily: "lato-SemiBold",
+            fontFamily: "Cairo-Regular",
             color: "#667085",
             fontSize: "16px",
           }}
         >{`${languages[language]['Shipment No.']}: ${shipNumber}`}</p>
         <p
           style={{
-            fontFamily: "poppins-SemiBold",
+            fontFamily: "Cairo-Regular",
             fontSize: "40px",
             margin: "auto",
           }}
         >
-          {languages[language][shipState]}
+          {languages[language][shipState] ? languages[language][shipState] : shipState}
         </p>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row", gap: "6px" }}>
@@ -81,11 +81,11 @@ const ShipDetails = ({
         />
       </Box>
       <Box
-        fontFamily="lato-SemiBold"
+        fontFamily="Cairo-Regular"
         sx={{ display: "flex", flexDirection: "row", gap: "3px", mt: "24px" }}
       >
-        <p>{languages[language][shipState]}</p>
-        <p style={{ color: "#0098a5", fontFamily: "lato-SemiBold" }}>
+        <p>{languages[language][shipState] ? languages[language][shipState] : shipState}</p>
+        <p style={{ color: "#0098a5", fontFamily: "Cairo-Regular" }}>
           {shipLastStateDate}
         </p>
       </Box>

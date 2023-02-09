@@ -44,3 +44,7 @@
   font-family: Lato-semiBold;
   src: local('Lato-semiBold'),url('./fonts/LatoSemibold.ttf') format('truetype');
 }
+@font-face{
+  font-family: Cairo-Regular;
+  src:local('Cairo-Regular'), url('./fonts/Cairo-Regular.ttf') format('truetype');
+}
