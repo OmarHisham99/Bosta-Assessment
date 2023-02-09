@@ -44,7 +44,3 @@
   font-family: Lato-semiBold;
   src: local('Lato-semiBold'),url('./fonts/LatoSemibold.ttf') format('truetype');
 }
-
-html[:dir='rtl'] {
-  transform: scaleX(-1);
-}
