@@ -20,20 +20,8 @@ import "./fonts/Poppins-SemiBold.ttf";
 import moment, { lang } from "moment/moment";
 import ShipDetails from "./Components/ShipDetails/ShipDetails";
 import i18next from "i18next";
-import { useTranslation } from 'react-i18next';
+import languages from './languages'
 
-export const languages = {
-  'en': {
-    'Track Your Shipment': 'Track Your Shipment',
-    'Tracking No.': 'Tracking  No.',
-    'Delivered': 'Delivered',
-  },
-  'ar':{
-    'Track Your Shipment': 'تتبع شحنتك',
-    'Tracking No.': 'رقم التتبع',
-    'Delivered': 'تم التسليم',
-  }
-}
 const items = [
   {
     label: "English",
@@ -188,7 +176,7 @@ function App() {
           notFoundShip ? (
             <div>
               <span>
-                <Alert severity="error" sx={{width:'40%', m:'auto',mt:'10px'}}>No record of this tracking number can be found at this time, please check the number and try again later. For further assistance, please contact Customer Service.</Alert>
+                <Alert severity="error" sx={{width:'40%', m:'auto',mt:'10px'}}>{languages[language]['No record of this tracking number can be found at this time, please check the number and try again later. For further assistance, please contact Customer Service.']}</Alert>
               </span>
             </div>
           ) : (
@@ -197,6 +185,7 @@ function App() {
               shipState={shipState}
               shipLastStateDate={shipLastStateDate}
               shipEvents={transitEvents}
+              language={language}
             />
           )
         ) : (

@@ -12,15 +12,15 @@ import { Box } from "@mui/material";
 import { Divider } from "antd";
 import moment from "moment";
 import React from "react";
-import languages from "../../App";
+import languages from "../../languages";
 
 const ShipDetails = ({
   shipNumber,
   shipState,
   shipLastStateDate,
   shipEvents,
+  language
 }) => {
-  console.log(languages);
   let events = shipEvents;
   return (
     <Box
@@ -40,7 +40,7 @@ const ShipDetails = ({
             color: "#667085",
             fontSize: "16px",
           }}
-        >{`Shipment No. ${shipNumber}`}</p>
+        >{`${languages[language]['Shipment No.']}: ${shipNumber}`}</p>
         <p
           style={{
             fontFamily: "poppins-SemiBold",
@@ -48,7 +48,7 @@ const ShipDetails = ({
             margin: "auto",
           }}
         >
-          {shipState}
+          {languages[language][shipState]}
         </p>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row", gap: "6px" }}>
@@ -84,7 +84,7 @@ const ShipDetails = ({
         fontFamily="lato-SemiBold"
         sx={{ display: "flex", flexDirection: "row", gap: "3px", mt: "24px" }}
       >
-        <p>{shipState} on </p>
+        <p>{languages[language][shipState]}</p>
         <p style={{ color: "#0098a5", fontFamily: "lato-SemiBold" }}>
           {shipLastStateDate}
         </p>
