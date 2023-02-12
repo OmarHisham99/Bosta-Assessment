@@ -10,7 +10,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Dropdown, Space } from "antd";
+import { Dropdown, Grid, Space } from "antd";
 import { react, useState, useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import storySet from "./images/story-set.svg";
@@ -20,7 +20,8 @@ import "./fonts/Poppins-SemiBold.ttf";
 import moment, { lang } from "moment/moment";
 import ShipDetails from "./Components/ShipDetails/ShipDetails";
 import i18next from "i18next";
-import languages from './languages'
+import languages from "./languages";
+import { Container } from "@mui/system";
 
 const items = [
   {
@@ -34,7 +35,6 @@ const items = [
 ];
 
 function App() {
-
   // ************* States *************
   const [language, setLanguage] = useState("en");
   const [shipNumber, setShipNumber] = useState("");
@@ -64,7 +64,7 @@ function App() {
     if (shipNumber === "") {
       setDetailsOpen(false);
     } else if (Object.keys(data.data).length === 0) {
-      setDetailsOpen(true)
+      setDetailsOpen(true);
       setNotFoundShip(true);
     } else {
       setNotFoundShip(false);
@@ -73,78 +73,86 @@ function App() {
   };
   const onClick = ({ key }) => {
     setLanguage(key);
-
-  }
+  };
   // ************* Effects *************
   useEffect(() => {}, [data]);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Container sx={{ flexGrow: 1}}>
       {/************ app bar **************/}
-      <AppBar
-        position="fixed"
-        sx={{ backgroundColor: "white", boxShadow: 0, zIndex: 1 }}
-      >
-        <Toolbar
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            height: 20,
-          }}
+      <Container>
+        <AppBar
+          position="fixed"
+          sx={{ backgroundColor: "white", boxShadow: 0, zIndex: 1 }}
         >
-          <img
-            src={require("./images/bosta-logo.png")}
-            style={{
-              height: 30,
-              width: 90,
-              maxWidth: 90,
-              marginLeft: "3%",
-              cursor: "pointer",
-            }}
-          />
-          <Dropdown
-            menu={{
-              items,
-              onClick,
+          <Toolbar
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              height: 20,
             }}
           >
-            <a
-              onClick={(e) => e.preventDefault()}
+            <img
+              src={require("./images/bosta-logo.png")}
               style={{
-                color: "black",
+                height: 30,
+                width: 90,
+                maxWidth: 90,
+                marginLeft: "3%",
                 cursor: "pointer",
-                marginRight: "3%",
-                zIndex: 0,
+              }}
+            />
+            <Dropdown
+              menu={{
+                items,
+                onClick,
               }}
             >
-              <Space>
-                {language === "en" ? "En" : "Ar"}
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-        </Toolbar>
-      </AppBar>
-
+              <a
+                onClick={(e) => e.preventDefault()}
+                style={{
+                  color: "black",
+                  cursor: "pointer",
+                  marginRight: "3%",
+                  zIndex: 0,
+                }}
+              >
+                <Space>
+                  {language === "en" ? "En" : "Ar"}
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
+          </Toolbar>
+        </AppBar>
+      </Container>
       {/************ main content **************/}
       {/* search area */}
-      <Box
+
+      <Container
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          mt: "10%",
+          pt: "15vh",
         }}
       >
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ fontFamily: "Cairo-Regular",fontWeight:'Bold', color: "#475467", mb: "24px" }}
-        >
-          {languages[language]['Track Your Shipment']}
-        </Typography>
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
+        <Container sx={{display:'flex', flexDirection:'row',justifyContent:'center'}}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              fontFamily: "Cairo-Regular",
+              fontWeight: "Bold",
+              color: "#475467",
+              mb: "24px",
+            }}
+          >
+            {languages[language]["Track Your Shipment"]}
+          </Typography>
+        </Container>
+        <Container sx={{display:'flex', flexDirection:'row',justifyContent:'center'}}>
           <TextField
             autoFocus
             placeholder={languages[language]["Tracking No."]}
@@ -166,13 +174,21 @@ function App() {
               style={{ height: 50, objectFit: "fill" }}
             />
           </button>
-        </Box>
-
+        </Container>
         {detailsOpen ? (
           notFoundShip ? (
             <div>
               <span>
-                <Alert severity="error" sx={{width:'40%', m:'auto',mt:'10px'}}>{languages[language]['No record of this tracking number can be found at this time, please check the number and try again later. For further assistance, please contact Customer Service.']}</Alert>
+                <Alert
+                  severity="error"
+                  sx={{ width: "40%", m: "auto", mt: "10px" }}
+                >
+                  {
+                    languages[language][
+                      "No record of this tracking number can be found at this time, please check the number and try again later. For further assistance, please contact Customer Service."
+                    ]
+                  }
+                </Alert>
               </span>
             </div>
           ) : (
@@ -196,9 +212,10 @@ function App() {
             }}
           />
         )}
-      </Box>
+      </Container>
+
       {/* search results */}
-    </Box>
+    </Container>
   );
 }
 
