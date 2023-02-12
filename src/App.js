@@ -51,14 +51,8 @@ function App() {
   // ************* Functions *************
   const handleSearch = () => {
     dispatch(fetchShipById(shipNumber));
-    checkValidation();
-    setShipState(data?.data?.CurrentStatus?.state);
-    setShipLastStateDate(
-      moment(data?.data?.CurrentStatus?.timestamp).format("LLLL")
-    );
-    setTransitEvents(data?.data?.TransitEvents);
-    setShipTrackingNumber(data?.data?.TrackingNumber);
   };
+
 
   const checkValidation = () => {
     if (shipNumber === "") {
@@ -75,7 +69,15 @@ function App() {
     setLanguage(key);
   };
   // ************* Effects *************
-  useEffect(() => {}, [data]);
+  useEffect(() => {
+    checkValidation();
+    setShipState(data?.data?.CurrentStatus?.state);
+    setShipLastStateDate(
+      moment(data?.data?.CurrentStatus?.timestamp).format("LLLL")
+    );
+    setTransitEvents(data?.data?.TransitEvents);
+    setShipTrackingNumber(data?.data?.TrackingNumber);
+  }, [data]);
 
   return (
     <Container sx={{ flexGrow: 1}}>
